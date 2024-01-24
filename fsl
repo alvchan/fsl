@@ -1,0 +1,34 @@
+-- THIS PART IS DONE BY fsl.sh (run "bash fsl.sh") --
+// to get user account sonic
+open wsl
+sudo useradd -m -d /home/$username/ -s /bin/bash $username => makes user sonic
+sudo passwd sonic => changes password for sonic
+sudo chmod 666 /etc/wsl.conf => apply rw permission to everyone
+echo "[user]" >> /etc/wsl.conf => sets field for wsl user settings
+echo "default=sonic" >> /etc/wsl.conf => set user default on wsl to sonic
+sudo chmod 644 /etc/wsl.conf => set permissions back to rw/r/r
+close wsl and run "wsl --terminate <distroname>" => forces wsl to reread configs, <distroname> is probably Ubuntu
+reopen and test
+
+// to get sonic ascii on startup
+sudo apt install neofetch => gets a tool called neofetch from 'apt'
+nano/vim/emacs/gedit ~/.sonic.txt
+paste sonic ascii in with ctrl+v or ctrl+shift+v
+close editor
+echo "neofetch --ascii ~/.sonic.txt" >> ~/.bashrc
+
+// glossary
+/: a symbol to reference the root directory, where everything lives/grows out of
+~: a symbol to reference your home directory (/home/sonic)
+|: "pipes" input of one program and places it into the output of another
+>: output of program is written to a specified file
+>>: output of program is appended to a specified file
+apt: a repository for programs, is pretty much an appstore
+cat: "concatenate", reads out file contents to terminal
+cd: change directory
+dotfiles: files that start with a dot are hidden; usually are config files
+echo: "echos" back what you tell it, i.e. it's a print statement
+ls: list directory contents
+root: a "superuser" account more powerful than any other; sudo runs commands from root
+su: switch user, defaults to root
+sudo: "superuser do", aka "run as admin"
